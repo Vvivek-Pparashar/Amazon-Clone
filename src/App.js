@@ -1,11 +1,24 @@
 import './App.css';
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Login from './Components/Login';
 
 function App() {
   return (
-    <div className="App">
-        <h1>Stared Making Amazon-Clone Using React, Reacr-router, Context-API, and Firebase</h1>
-    </div>
+    <Router>
+        <div className="App">
+          <Routes>
+            <Route path='/checkout' element={<Login/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/' element={<h1>vivek is gr8</h1>}/>
+          </Routes>
+      </div>
+    </Router>
+    
   );
 }
 
