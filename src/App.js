@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Header from "./Components/Header";
+import Home from "./Components/Home";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             element={
               <>
                 <Header />
-                <h1>Vivek is gr800</h1>
+                <Home/>
               </>
             }
           />
