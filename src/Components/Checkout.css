@@ -3,6 +3,7 @@
     height: max-content;
     padding: 10px;
     background-color: #fff;
+    flex-direction: column;
  }
  .checkout__title{
      margin-right: 10px;
