@@ -2,9 +2,9 @@ import React from "react";
 import { useStateValue } from "./StateProvider";
 import "./CheckoutProduct.css";
 function CheckoutProduct({ id, title, image, price, rating }) {
-  const [{basket}, dispatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
   const removeFromBasket = () => {
-    console.log('clicked')
+    console.log("clicked");
     dispatch({
       type: "REMOVE_FROM_BASKET",
       id: id,
