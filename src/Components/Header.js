@@ -4,11 +4,18 @@ import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { ShoppingBasket } from "@mui/icons-material";
 import { useStateValue } from "./StateProvider";
+import { auth } from "./Firebase";
 
 const Header = () => {
 
-  const [{basket}] =  useStateValue();
+  const [{basket, user}] =  useStateValue();
 
+  const login = ()=>{
+    if(user){
+      auth.signOut();
+    }
+  }
+  
   return (
     <nav className="header">
       {/* LOGO FOR WEBSITE */}
@@ -35,10 +42,10 @@ const Header = () => {
 
       <div className="header__nav">
         {/* 1st link */}
-        <Link to={"/login"} className="header__link">
-          <div className="header__option">
-            <span className="header__optionLineOne">Hello, Vivek</span>
-            <span className="header__optionLineTwo">SignIn</span>
+        <Link to={!user && "/login"} className="header__link">
+          <div onClick={login} className="header__option">
+            <span className="header__optionLineOne">Hello, {user}</span>
+            <span className="header__optionLineTwo">Sign{user ? 'Out' : 'In'}</span>
           </div>
         </Link>
         {/* 2nd link */}

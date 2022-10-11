@@ -1,18 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { auth } from "./Firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
+  const history = useNavigate ();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const login = (event)=>{
+  const login = (event) => {
     event.preventDefault();
-    console.log('first')
-  }
+    console.log("first");
 
-  const register = (event)=>{
+    // const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((auth) => {
+        console.log("logged inn");
+        history('/')
+      })
+      .catch((e) => alert(e.message));
+  };
+
+  const register = (event) => {
     event.preventDefault();
-    console.log('register')
-  }
+    console.log("register");
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((auth) => {
+        console.log("logged inn");
+        history.push("/");
+      })
+      .catch((e) => alert(e.message));
+  };
   return (
     <div className="login">
       <Link to="/">
@@ -26,11 +49,23 @@ const Login = () => {
         <h1>Sign In</h1>
         <form>
           <h5>Email</h5>
-          <input type="email" />
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
           <h5>Password</h5>
-          <input type="password" />
+          <input
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
           <Link to="/">
-            <button className="login__signInButton" type="submit" onClick={login}>
+            <button
+              className="login__signInButton"
+              type="submit"
+              onClick={login}
+            >
               Sign in
             </button>
           </Link>
