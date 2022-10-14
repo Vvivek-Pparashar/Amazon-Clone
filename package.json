@@ -1,7 +1,7 @@
 {
   "name": "my",
   "version": "0.1.0",
-  "homepage" : "https://Vvivek-Pparashar.github.io/Amazon-Clone/",
+  "homepage" : "https://Vvivek-Pparashar.github.io",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
